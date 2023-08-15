@@ -1,5 +1,5 @@
 
-set(TOOLCHAIN_DIR "C:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.07")
+set(TOOLCHAIN_DIR "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/12.3 rel1")
 
 GET_FILENAME_COMPONENT(STM32_CMAKE_DIR ${CMAKE_CURRENT_LIST_FILE} DIRECTORY)
 list(APPEND CMAKE_MODULE_PATH ${STM32_CMAKE_DIR})
