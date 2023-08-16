@@ -51,17 +51,18 @@ set(MCU_FPU fpv4-sp-d16)
 #${cross_prefix}${cross_size}${cross_suffix}  --format=berkeley "F7Usb.elf"
 
 #target_compile_definitions(${PROJECT_NAME} PUBLIC )
-set(COMMON_FLAGS "-mcpu=${MCU_ARCH} -mthumb -mfloat-abi=${MCU_FLOAT_ABI} -mfpu=${MCU_FPU} -ffunction-sections -fdata-sections -fsigned-char -g  -fmessage-length=0 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__))")
+set(COMMON_FLAGS "-mcpu=${MCU_ARCH} -mthumb -mfloat-abi=${MCU_FLOAT_ABI} -mfpu=${MCU_FPU} -fsigned-char -fmessage-length=0 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__))")
 
-set(CMAKE_CXX_FLAGS "${COMMON_FLAGS} -std=c++17 -fno-exceptions -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics" CACHE INTERNAL "cxx compiler flags")
+set(CMAKE_CXX_FLAGS "${COMMON_FLAGS} -std=c++17 -O0 -g -fno-exceptions -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics" CACHE INTERNAL "cxx compiler flags")
 set(CMAKE_C_FLAGS "${COMMON_FLAGS} -std=c11" CACHE INTERNAL "c compiler flags")
 
 set(CMAKE_EXE_LINKER_FLAGS "-Wl,-gc-sections -specs=nosys.specs -specs=nano.specs -T ${MCU_LINKER_SCRIPT}" CACHE INTERNAL "exe compiler flags")
 SET(CMAKE_ASM_FLAGS "-mthumb -mcpu=${MCU_ARCH} -mfpu=${MCU_FPU} -mfloat-abi=${MCU_FLOAT_ABI} -x assembler-with-cpp" CACHE INTERNAL "asm compiler flags")
 
 
-SET(CMAKE_C_FLAGS_DEBUG "-Og -g" CACHE INTERNAL "c compiler flags debug")
-SET(CMAKE_CXX_FLAGS_DEBUG "-Og -g" CACHE INTERNAL "cxx compiler flags debug")
+
+SET(CMAKE_C_FLAGS_DEBUG "-O0 -g" CACHE INTERNAL "c compiler flags debug")
+SET(CMAKE_CXX_FLAGS_DEBUG "-O0 -g" CACHE INTERNAL "cxx compiler flags debug")
 SET(CMAKE_ASM_FLAGS_DEBUG "-g" CACHE INTERNAL "asm compiler flags debug")
 SET(CMAKE_EXE_LINKER_FLAGS_DEBUG "" CACHE INTERNAL "linker flags debug")
 
