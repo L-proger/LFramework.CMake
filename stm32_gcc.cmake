@@ -70,6 +70,3 @@ SET(CMAKE_C_FLAGS_RELEASE "-O3 -flto" CACHE INTERNAL "c compiler flags release")
 SET(CMAKE_CXX_FLAGS_RELEASE "-O3 -flto" CACHE INTERNAL "cxx compiler flags release")
 SET(CMAKE_ASM_FLAGS_RELEASE "" CACHE INTERNAL "asm compiler flags release")
 SET(CMAKE_EXE_LINKER_FLAGS_RELEASE "-flto" CACHE INTERNAL "linker flags release")
-
-include(fetch_utils)
-
