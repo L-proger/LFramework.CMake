@@ -17,14 +17,47 @@ endif()
 
 
 
-set(STM32_FAMILIES                     F7          )
-set(STM32_HAL_DEFAULT_VERSION          v1.3.0      )
-set(STM32_FREERTOS_DEFAULT_VERSION     v10.2.1     )
-set(STM32_CMSIS_DEVICE_DEFAULT_VERSION v1.2.8      )
+set(STM32_FAMILIES                     F7           )
+set(STM32_HAL_DEFAULT_VERSION          v1.3.0       )
+set(STM32_FREERTOS_DEFAULT_VERSION     v10.2.1      )
+set(STM32_CMSIS_DEVICE_DEFAULT_VERSION v1.2.8       )
 
-set(STM32_CMSIS_CORE_DEFAULT_VERSION   v5.6.0  )
+set(STM32_CMSIS_CORE_DEFAULT_VERSION   v5.6.0       )
+
+set(STM32_USB_DEVICE_DEFAULT_VERSION   v2.11.2      )
+set(STM32_USB_HOST_DEFAULT_VERSION     v3.5.1       )
 
 include(FetchContent)
+
+FetchContent_Declare(stm32_usb_host
+    GIT_REPOSITORY https://github.com/STMicroelectronics/stm32_mw_usb_host.git
+    GIT_TAG ${STM32_USB_HOST_DEFAULT_VERSION}
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND ""
+    GIT_PROGRESS TRUE
+)
+
+FetchContent_Declare(stm32_usb_device
+    GIT_REPOSITORY https://github.com/STMicroelectronics/stm32_mw_usb_device.git
+    GIT_TAG ${STM32_USB_DEVICE_DEFAULT_VERSION}
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND ""
+    GIT_PROGRESS TRUE
+)
+
+function(FetchStm32UsbDevice)
+    string(TOLOWER ${STM32_FAMILY_EX} STM32_FAMILY_EX_LOWER_CASE)
+    FetchContent_MakeAvailable(stm32_usb_device)
+    set(STM32_USB_DEVICE_SOURCE_DIR ${stm32_usb_device_SOURCE_DIR} PARENT_SCOPE)
+endfunction()
+
+function(FetchStm32UsbHost)
+    string(TOLOWER ${STM32_FAMILY_EX} STM32_FAMILY_EX_LOWER_CASE)
+    FetchContent_MakeAvailable(stm32_usb_host)
+    set(STM32_USB_HOST_SOURCE_DIR ${stm32_usb_host_SOURCE_DIR} PARENT_SCOPE)
+endfunction()
+
+
 
 FetchContent_Declare(stm32_cmsis_core
     GIT_REPOSITORY https://github.com/STMicroelectronics/cmsis_core.git
