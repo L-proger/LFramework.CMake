@@ -19,7 +19,7 @@ endif()
 
 set(STM32_FAMILIES                     F7           )
 set(STM32_HAL_DEFAULT_VERSION          v1.3.0       )
-set(STM32_FREERTOS_DEFAULT_VERSION     v10.2.1      )
+set(STM32_FREERTOS_DEFAULT_VERSION     v10.5.1      )
 set(STM32_CMSIS_DEVICE_DEFAULT_VERSION v1.2.8       )
 
 set(STM32_CMSIS_CORE_DEFAULT_VERSION   v5.6.0       )

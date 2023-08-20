@@ -4,18 +4,18 @@ target_include_directories(Stm32FreeRtos
 INTERFACE
     ${STM32_FREERTOS_SOURCE_DIR}/Source
     ${STM32_FREERTOS_SOURCE_DIR}/Source/include
-    ${STM32_FREERTOS_SOURCE_DIR}/Source/CMSIS_RTOS_V2
+    #${STM32_FREERTOS_SOURCE_DIR}/Source/CMSIS_RTOS_V2
     ${STM32_FREERTOS_SOURCE_DIR}/Source/portable/GCC/ARM_CM7/r0p1
 )
 
 file(GLOB_RECURSE Stm32FreeRtos_HEADERS 
-    "${STM32_FREERTOS_SOURCE_DIR}/Source/CMSIS_RTOS_V2/*.h" 
+    #"${STM32_FREERTOS_SOURCE_DIR}/Source/CMSIS_RTOS_V2/*.h" 
     "${STM32_FREERTOS_SOURCE_DIR}/Source/include/**/*.h"
     "${STM32_FREERTOS_SOURCE_DIR}/Source/portable/GCC/ARM_CM7/*.h"
 )
 
 file(GLOB_RECURSE Stm32FreeRtos_SOURCES 
-    "${STM32_FREERTOS_SOURCE_DIR}/Source/CMSIS_RTOS_V2/*.c"
+    #"${STM32_FREERTOS_SOURCE_DIR}/Source/CMSIS_RTOS_V2/*.c"
     "${STM32_FREERTOS_SOURCE_DIR}/Source/portable/GCC/ARM_CM7/*.c"
 )
 
